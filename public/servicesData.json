@@ -1,50 +1,74 @@
 [
   {
     "id": 1,
-    "image": "https://i.ibb.co.com/0h8Mqmv/farzad-p-x-Sl33-Wxyc-unsplash.jpg",
-    "name": "Web Development",
-    "category": "Development",
-    "pricing": "$500",
-    "counselor": "John Doe"
+    "image": "https://i.ibb.co.com/WHqSZGz/sebastian-herrmann-O2o1hz-DA7i-E-unsplash.jpg",
+    "serviceName": "Career Counseling Sessions",
+    "category": "Online",
+    "description": "Personalized one-on-one sessions to help you explore career options and set clear goals.",
+    "pricing": "$50 per session",
+    "duration": "05-12-24 5:00 PM - 6:00 PM",
+    "counselor": "Dr. Sarah Johnson",
+    "rating": 4.8,
+    "visit": "https://yourwebsite.com/career-counseling"
   },
   {
     "id": 2,
-    "image": "https://i.ibb.co.com/Yjy39b8/kenny-eliason-LUg-HXv-Le-k-M-unsplash.jpg",
-    "name": "Mobile App Development",
-    "category": "Development",
-    "pricing": "$700",
-    "counselor": "Jane Smith"
+    "image": "https://i.ibb.co.com/jT2xhrc/mina-rad-FAWfi-Eh096-E-unsplash.jpg",
+    "serviceName": "Resume Review",
+    "category": "Offline",
+    "description": "Comprehensive feedback on your resume to help you stand out in job applications.",
+    "pricing": "$30 per review",
+    "duration": "10-12-24 3:00 PM - 4:00 PM",
+    "counselor": "Mr. Alex Thompson",
+    "rating": 4.6,
+    "visit": "https://yourwebsite.com/resume-review"
   },
   {
     "id": 3,
-    "image": "https://i.ibb.co.com/nj9VWGH/alvaro-reyes-q-Wwp-Hwip31-M-unsplash.jpg",
-    "name": "UI/UX Design",
-    "category": "Design",
-    "pricing": "$400",
-    "counselor": "Alice Johnson"
+    "image": "https://i.ibb.co.com/Z1X0FcG/jason-goodman-Oalh2-Moj-Uuk-unsplash.jpg",
+    "serviceName": "Group Career Workshop",
+    "category": "Group",
+    "description": "Interactive workshops to learn career strategies and network with peers.",
+    "pricing": "$20 per participant",
+    "duration": "15-12-24 2:00 PM - 4:00 PM",
+    "counselor": "Ms. Emily Carter",
+    "rating": 4.7,
+    "visit": "https://yourwebsite.com/group-career-workshop"
   },
   {
     "id": 4,
-    "image": "https://i.ibb.co.com/qYzLhM1/diggity-marketing-SB0-WARG16-HI-unsplash.jpg",
-    "name": "Digital Marketing",
-    "category": "Marketing",
-    "pricing": "$300",
-    "counselor": "Bob Brown"
+    "image": "https://i.ibb.co.com/dbfPkdt/scott-graham-5f-Nm-Wej4t-AA-unsplash.jpg",
+    "serviceName": "Interview Preparation",
+    "category": "Online",
+    "description": "Mock interviews and tips to boost your confidence and ace your interviews.",
+    "pricing": "$40 per session",
+    "duration": "20-12-24 11:00 AM - 12:00 PM",
+    "counselor": "Dr. David Lee",
+    "rating": 4.9,
+    "visit": "https://yourwebsite.com/interview-preparation"
   },
   {
     "id": 5,
-    "image": "https://i.ibb.co.com/PTkW3ST/merakist-l5if0i-Qf-V4c-unsplash.jpg",
-    "name": "SEO Optimization",
-    "category": "Marketing",
-    "pricing": "$250",
-    "counselor": "Eve Adams"
+    "image": "https://i.ibb.co.com/yY90dGJ/austin-distel-w-D1-LRb9-Oe-Eo-unsplash.jpg",
+    "serviceName": "Skill Development Training",
+    "category": "Offline",
+    "description": "Hands-on training sessions to enhance your professional skills.",
+    "pricing": "$100 per module",
+    "duration": "25-12-24 10:00 AM - 4:00 PM",
+    "counselor": "Prof. Megan Parker",
+    "rating": 4.5,
+    "visit": "https://yourwebsite.com/skill-development"
   },
   {
     "id": 6,
-    "image": "https://i.ibb.co.com/Cscq1jW/myriam-jessier-eve-I7-MOc-Smw-unsplash.jpg",
-    "name": "Data Analysis",
-    "category": "Analytics",
-    "pricing": "$600",
-    "counselor": "Charlie Davis"
+    "image": "https://i.ibb.co.com/ssVKy85/marvin-meyer-SYTO3xs06f-U-unsplash.jpg",
+    "serviceName": "Time Management Workshop",
+    "category": "Online",
+    "description": "Learn effective time management strategies to improve productivity and work-life balance.",
+    "pricing": "$35 per session",
+    "duration": "30-12-24 2:00 PM - 3:30 PM",
+    "counselor": "Ms. Olivia Roberts",
+    "rating": 4.7,
+    "visit": "https://yourwebsite.com/time-management"
   }
 ]
