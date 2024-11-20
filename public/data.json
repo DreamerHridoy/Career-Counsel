@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co/qxT5tMC/career-counseling.jpg",
+    "serviceName": "Career Counseling Sessions",
+    "category": "Online",
+    "description": "Personalized one-on-one sessions to help you explore career options and set clear goals.",
+    "pricing": "$50 per session",
+    "duration": "05-12-24 5:00 PM - 6:00 PM",
+    "counselor": "Dr. Sarah Johnson",
+    "rating": 4.8,
+    "learnMore": "https://yourwebsite.com/career-counseling"
+  },
+  {
+    "id": 2,
+    "image": "https://i.ibb.co/yFVbVr7/resume-review.jpg",
+    "serviceName": "Resume Review",
+    "category": "Offline",
+    "description": "Comprehensive feedback on your resume to help you stand out in job applications.",
+    "pricing": "$30 per review",
+    "duration": "10-12-24 3:00 PM - 4:00 PM",
+    "counselor": "Mr. Alex Thompson",
+    "rating": 4.6,
+    "learnMore": "https://yourwebsite.com/resume-review"
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co/92LfQPt/group-session.jpg",
+    "serviceName": "Group Career Workshop",
+    "category": "Group",
+    "description": "Interactive workshops to learn career strategies and network with peers.",
+    "pricing": "$20 per participant",
+    "duration": "15-12-24 2:00 PM - 4:00 PM",
+    "counselor": "Ms. Emily Carter",
+    "rating": 4.7,
+    "learnMore": "https://yourwebsite.com/group-career-workshop"
+  },
+  {
+    "id": 4,
+    "image": "https://i.ibb.co/4NP5wFG/interview-prep.jpg",
+    "serviceName": "Interview Preparation",
+    "category": "Online",
+    "description": "Mock interviews and tips to boost your confidence and ace your interviews.",
+    "pricing": "$40 per session",
+    "duration": "20-12-24 11:00 AM - 12:00 PM",
+    "counselor": "Dr. David Lee",
+    "rating": 4.9,
+    "learnMore": "https://yourwebsite.com/interview-preparation"
+  },
+  {
+    "id": 5,
+    "image": "https://i.ibb.co/k4c3F0T/skill-development.jpg",
+    "serviceName": "Skill Development Training",
+    "category": "Offline",
+    "description": "Hands-on training sessions to enhance your professional skills.",
+    "pricing": "$100 per module",
+    "duration": "25-12-24 10:00 AM - 4:00 PM",
+    "counselor": "Prof. Megan Parker",
+    "rating": 4.5,
+    "learnMore": "https://yourwebsite.com/skill-development"
+  }
+]

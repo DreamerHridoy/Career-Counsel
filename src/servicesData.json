@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "image": "https://via.placeholder.com/150",
+    "name": "Web Development",
+    "category": "Development",
+    "pricing": "$500",
+    "counselor": "John Doe"
+  },
+  {
+    "id": 2,
+    "image": "https://via.placeholder.com/150",
+    "name": "Mobile App Development",
+    "category": "Development",
+    "pricing": "$700",
+    "counselor": "Jane Smith"
+  },
+  {
+    "id": 3,
+    "image": "https://via.placeholder.com/150",
+    "name": "UI/UX Design",
+    "category": "Design",
+    "pricing": "$400",
+    "counselor": "Alice Johnson"
+  },
+  {
+    "id": 4,
+    "image": "https://via.placeholder.com/150",
+    "name": "Digital Marketing",
+    "category": "Marketing",
+    "pricing": "$300",
+    "counselor": "Bob Brown"
+  },
+  {
+    "id": 5,
+    "image": "https://via.placeholder.com/150",
+    "name": "SEO Optimization",
+    "category": "Marketing",
+    "pricing": "$250",
+    "counselor": "Eve Adams"
+  },
+  {
+    "id": 6,
+    "image": "https://via.placeholder.com/150",
+    "name": "Data Analysis",
+    "category": "Analytics",
+    "pricing": "$600",
+    "counselor": "Charlie Davis"
+  }
+]
