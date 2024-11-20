@@ -1,20 +1,45 @@
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-10">
         <h2 className="text-2xl font-semibold text-center">
-          Login Your Account
+          Register Your Account
         </h2>
         <form className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              name="name"
+              type="text"
+              placeholder="email"
+              className="input input-bordered"
+              required
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
             <input
+              name="email"
               type="email"
               placeholder="email"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">photoURL </span>
+            </label>
+            <input
+              type="text"
+              name="photoURL "
+              placeholder="photoURL "
               className="input input-bordered"
               required
             />
@@ -40,9 +65,9 @@ const Login = () => {
           </div>
         </form>
         <p className="text-center font-semibold">
-          Don't Have An Account?
-          <Link className="text-red-500" to="/auth/register">
-            Register
+          Already Have An Account?
+          <Link className="text-red-500" to="/auth/login">
+            Login
           </Link>
         </p>
       </div>
@@ -50,4 +75,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
