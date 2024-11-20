@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "https://via.placeholder.com/150",
+    "image": "https://i.ibb.co.com/0h8Mqmv/farzad-p-x-Sl33-Wxyc-unsplash.jpg",
     "name": "Web Development",
     "category": "Development",
     "pricing": "$500",
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "image": "https://via.placeholder.com/150",
+    "image": "https://i.ibb.co.com/Yjy39b8/kenny-eliason-LUg-HXv-Le-k-M-unsplash.jpg",
     "name": "Mobile App Development",
     "category": "Development",
     "pricing": "$700",
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "image": "https://via.placeholder.com/150",
+    "image": "https://i.ibb.co.com/nj9VWGH/alvaro-reyes-q-Wwp-Hwip31-M-unsplash.jpg",
     "name": "UI/UX Design",
     "category": "Design",
     "pricing": "$400",
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "image": "https://via.placeholder.com/150",
+    "image": "https://i.ibb.co.com/qYzLhM1/diggity-marketing-SB0-WARG16-HI-unsplash.jpg",
     "name": "Digital Marketing",
     "category": "Marketing",
     "pricing": "$300",
@@ -33,7 +33,7 @@
   },
   {
     "id": 5,
-    "image": "https://via.placeholder.com/150",
+    "image": "https://i.ibb.co.com/PTkW3ST/merakist-l5if0i-Qf-V4c-unsplash.jpg",
     "name": "SEO Optimization",
     "category": "Marketing",
     "pricing": "$250",
@@ -41,7 +41,7 @@
   },
   {
     "id": 6,
-    "image": "https://via.placeholder.com/150",
+    "image": "https://i.ibb.co.com/Cscq1jW/myriam-jessier-eve-I7-MOc-Smw-unsplash.jpg",
     "name": "Data Analysis",
     "category": "Analytics",
     "pricing": "$600",

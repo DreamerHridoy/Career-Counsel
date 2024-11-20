@@ -1,12 +1,17 @@
-// ServiceSection.jsx
-import servicesData from "../servicesData.json";
+import { useEffect, useState } from "react";
 
 const ServiceSection = () => {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("/servicesData.json")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
   return (
     <div className="p-8 bg-gray-100">
       <h2 className="text-3xl font-bold text-center mb-8">Our Services</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {servicesData.map((service) => (
+        {services.map((service) => (
           <div
             key={service.id}
             className="p-6 bg-white shadow-md rounded-md text-center"
