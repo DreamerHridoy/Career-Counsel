@@ -1,27 +1,37 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log({ name, email, photo, password });
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must include at least 6 characters, an uppercase letter, and a lowercase letter."
+      );
+      return;
+    }
 
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
-        console.log(user);
+        toast.success("Registration successful!");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        toast.error(`Error: ${errorMessage}`);
       });
   };
 
@@ -58,12 +68,12 @@ const Register = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">photoURL </span>
+              <span className="label-text">photoURL</span>
             </label>
             <input
               type="text"
               name="photo"
-              placeholder="photoURL "
+              placeholder="photoURL"
               className="input input-bordered"
               required
             />
@@ -96,6 +106,7 @@ const Register = () => {
           </Link>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };

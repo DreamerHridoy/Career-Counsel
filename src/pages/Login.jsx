@@ -1,31 +1,49 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log({ email, password });
+
+    if (!email || !password) {
+      toast.error("Please fill in both email and password fields.");
+      return;
+    }
 
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate(location?.state ? location.state : "/");
-        console.log(user);
+        toast.success("Login successful! Redirecting...");
+        setTimeout(() => {
+          navigate(location?.state || "/");
+        }, 2000);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+
+        if (errorCode === "auth/user-not-found") {
+          toast.error("No user found with this email. Please register first.");
+        } else if (errorCode === "auth/wrong-password") {
+          toast.error("Incorrect password. Please try again.");
+        } else if (errorCode === "auth/too-many-requests") {
+          toast.error("Too many login attempts. Please try again later.");
+        } else {
+          toast.error(`Error: ${errorMessage}`);
+        }
       });
   };
+
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-10">
@@ -73,6 +91,7 @@ const Login = () => {
           </Link>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };
