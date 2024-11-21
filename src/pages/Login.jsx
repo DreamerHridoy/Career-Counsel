@@ -22,10 +22,12 @@ const Login = () => {
     }
 
     userLogin(enteredEmail, password)
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
         toast.success("Login successful! Redirecting...");
         setTimeout(() => {
-          navigate(location?.state || "/");
+          navigate(location?.state?.from || "/");
         }, 2000);
       })
       .catch((error) => {
@@ -44,20 +46,16 @@ const Login = () => {
       });
   };
 
-  const handleForgotPassword = () => {
-    navigate("/auth/forgot-password", { state: { email } });
-  };
-
   return (
     <>
       <Helmet>
-        <title>Login- My Website</title>
+        <title>Login - My Website</title>
       </Helmet>
 
       <div className="min-h-screen flex justify-center items-center">
-        <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-10">
-          <h2 className="text-2xl font-semibold text-center">
-            Login Your Account
+        <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-6 sm:p-10">
+          <h2 className="text-2xl font-semibold text-center mb-4">
+            Login to Your Account
           </h2>
           <form
             onSubmit={(e) => {
@@ -73,7 +71,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="email"
+                placeholder="Enter your email"
                 className="input input-bordered"
                 required
               />
@@ -85,26 +83,26 @@ const Login = () => {
               <input
                 name="password"
                 type="password"
-                placeholder="password"
+                placeholder="Enter your password"
                 className="input input-bordered"
                 required
               />
               <label className="label">
-                <button
-                  type="button"
-                  onClick={handleForgotPassword}
+                <Link
+                  to="/auth/forgot-password"
+                  state={{ email }}
                   className="label-text-alt link link-hover text-blue-600"
                 >
                   Forgot password?
-                </button>
+                </Link>
               </label>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
-          <p className="text-center font-semibold">
-            Don't Have An Account?
+          <p className="text-center font-semibold mt-4">
+            Don't Have An Account?{" "}
             <Link className="text-red-500" to="/auth/register">
               Register
             </Link>

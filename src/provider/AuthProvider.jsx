@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useMemo } from "react";
 import app from "../firebase/firebase.init";
 import {
   createUserWithEmailAndPassword,
@@ -7,8 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { toast } from "react-toastify"; // Import toast
-
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const AuthContext = createContext();
@@ -24,12 +23,13 @@ const AuthProvider = ({ children }) => {
       .then((userCredential) => {
         const user = userCredential.user;
         toast.success(
-          "Account created successfully! Welcome, " + user.displayName
+          "Account created successfully! Welcome, " +
+            (user.displayName || user.email)
         );
         setUser(user);
       })
       .catch((error) => {
-        const errorMessage = error.message;
+        const errorMessage = error.message || "Something went wrong.";
         toast.error("Error creating account: " + errorMessage);
       })
       .finally(() => {
@@ -42,11 +42,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        toast.success("Welcome back, " + user.displayName);
+        toast.success("Welcome back, " + (user.displayName || user.email));
         setUser(user);
       })
       .catch((error) => {
-        const errorMessage = error.message;
+        const errorMessage = error.message || "Something went wrong.";
         toast.error("Error logging in: " + errorMessage);
       })
       .finally(() => {
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
         setUser(null);
       })
       .catch((error) => {
-        const errorMessage = error.message;
+        const errorMessage = error.message || "Something went wrong.";
         toast.error("Error logging out: " + errorMessage);
       })
       .finally(() => {
@@ -80,14 +80,17 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = {
-    user,
-    setUser,
-    createNewUser,
-    logOut,
-    userLogin,
-    loading,
-  };
+  const authInfo = useMemo(
+    () => ({
+      user,
+      setUser,
+      createNewUser,
+      logOut,
+      userLogin,
+      loading,
+    }),
+    [user, loading]
+  );
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
