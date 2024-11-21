@@ -1,19 +1,23 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const links = (
-    <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
-    </>
-  );
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Successfully logged out!"); // Success toast on logout
+      })
+      .catch((error) => {
+        console.error("Error during logout:", error);
+        toast.error("Error logging out. Please try again."); // Error toast if logout fails
+      });
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -38,17 +42,38 @@ const NavBar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            {links}
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </li>
+            <li>
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">Build Your Career</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+        </ul>
       </div>
       <div className="navbar-end">
-        {user && user?.email ? (
-          <button onClick={logOut} className="btn btn-neutral rounded-none">
+        {user ? (
+          <button
+            onClick={handleLogOut}
+            className="btn btn-neutral rounded-none"
+          >
             LogOut
           </button>
         ) : (

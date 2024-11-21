@@ -3,13 +3,12 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import image1 from "../assets/slide1.png";
+import image2 from "../assets/slide3.jpeg";
+import image3 from "../assets/slide4.jpeg";
 
 const Slider = () => {
-  const slides = [
-    "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
-    "https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp",
-    "https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp",
-  ];
+  const slides = [image1, image2, image3];
 
   return (
     <div>

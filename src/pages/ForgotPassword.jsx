@@ -1,3 +1,4 @@
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -5,9 +6,19 @@ const ForgotPassword = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [email, setEmail] = useState(location?.state?.email || "");
+  const [loading, setLoading] = useState(false);
 
-  const handleResetPassword = () => {
-    navigate("https://mail.google.com", { replace: true });
+  const handleResetPassword = async () => {
+    setLoading(true);
+    const auth = getAuth();
+    try {
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Password reset email sent! Please check your inbox.");
+      navigate("/auth/login"); // Redirect to login after email is sent
+    } catch (error) {
+      toast.error("Error sending password reset email: " + error.message);
+    }
+    setLoading(false);
   };
 
   return (
@@ -17,8 +28,8 @@ const ForgotPassword = () => {
           Reset Your Password
         </h2>
         <p className="text-gray-600 text-center mb-6">
-          Please enter your email address to reset your password. We'll redirect
-          you to Gmail to complete the process.
+          Please enter your email address to reset your password. We'll send a
+          reset link to your email.
         </p>
         <div className="form-control mb-4">
           <label className="label">
@@ -35,8 +46,9 @@ const ForgotPassword = () => {
         <button
           onClick={handleResetPassword}
           className="btn btn-primary w-full"
+          disabled={loading}
         >
-          Reset Password
+          {loading ? "Sending..." : "Reset Password"}
         </button>
       </div>
     </div>

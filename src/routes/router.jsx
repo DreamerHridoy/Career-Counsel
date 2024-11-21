@@ -9,6 +9,7 @@ import ServiceDetails from "../pages/ServiceDetails";
 import NotFoundPage from "../pages/NotFoundPage ";
 import Dashboard from "../components/Dashboard";
 import ForgotPassword from "../pages/ForgotPassword";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      <PrivateRoute>
+        <Profile></Profile>
       </PrivateRoute>
     ),
   },
