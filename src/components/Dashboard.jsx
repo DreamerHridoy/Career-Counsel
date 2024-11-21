@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
+
 import Footer from "./Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -12,7 +12,7 @@ const Dashboard = () => {
       <Helmet>
         <title>Dashboard - My Website</title>
       </Helmet>
-      <NavBar></NavBar>
+
       <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white p-8">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 text-gray-800">
           <h1 className="text-4xl font-bold text-center mb-6 text-blue-600">
@@ -89,7 +89,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import NavBar from "../components/NavBar";
+
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -34,7 +34,7 @@ const ServiceDetails = () => {
       <Helmet>
         <title>Service-Details</title>
       </Helmet>
-      <NavBar />
+
       <div className="p-8 bg-gray-100">
         <h2 className="text-3xl font-bold text-center mb-4">
           {service.serviceName}
@@ -117,7 +117,6 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

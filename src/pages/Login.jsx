@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
+import AuthLayout from "../layouts/AuthLayout";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
@@ -21,33 +22,17 @@ const Login = () => {
       return;
     }
 
-    userLogin(enteredEmail, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
-        toast.success("Login successful! Redirecting...");
-        setTimeout(() => {
-          navigate(location?.state?.from || "/");
-        }, 2000);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        if (errorCode === "auth/user-not-found") {
-          toast.error("No user found with this email. Please register first.");
-        } else if (errorCode === "auth/wrong-password") {
-          toast.error("Incorrect password. Please try again.");
-        } else if (errorCode === "auth/too-many-requests") {
-          toast.error("Too many login attempts. Please try again later.");
-        } else {
-          toast.error(`Error: ${errorMessage}`);
-        }
-      });
+    userLogin(enteredEmail, password).then((result) => {
+      if (result) {
+        navigate(location?.state?.from || "/");
+      } else {
+        navigate("/auth/login");
+      }
+    });
   };
 
   return (
-    <>
+    <AuthLayout>
       <Helmet>
         <title>Login - My Website</title>
       </Helmet>
@@ -110,7 +95,7 @@ const Login = () => {
         </div>
         <ToastContainer />
       </div>
-    </>
+    </AuthLayout>
   );
 };
 

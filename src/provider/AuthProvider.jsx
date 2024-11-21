@@ -42,8 +42,10 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+
         toast.success("Welcome back, " + (user.displayName || user.email));
         setUser(user);
+        return user;
       })
       .catch((error) => {
         const errorMessage = error.message || "Something went wrong.";
@@ -58,7 +60,6 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth)
       .then(() => {
-        toast.success("Successfully logged out!");
         setUser(null);
       })
       .catch((error) => {

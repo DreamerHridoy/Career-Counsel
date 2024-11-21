@@ -26,7 +26,6 @@ const Profile = () => {
 
   return (
     <>
-      <NavBar></NavBar>
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
         <div className="bg-white shadow-md rounded-md p-6 w-full max-w-md">
           <h2 className="text-2xl font-semibold mb-4 text-center">
@@ -72,7 +71,6 @@ const Profile = () => {
         </div>
         <ToastContainer />
       </div>
-      <Footer></Footer>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,16 +7,13 @@ import { TailSpin } from "react-loader-spinner"; // Optional: Use a spinner comp
 
 const NavBar = () => {
   const { user, logOut, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
-    logOut()
-      .then(() => {
-        toast.success("Successfully logged out!");
-      })
-      .catch((error) => {
-        console.error("Error during logout:", error);
-        toast.error("Error logging out. Please try again.");
-      });
+    logOut().then(() => {
+      toast.success("Successfully logged out!");
+      navigate("/auth/login");
+    });
   };
 
   if (loading) {
@@ -65,12 +62,16 @@ const NavBar = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <li>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile">Profile</NavLink>
-          </li>
+          {user ? (
+            <>
+              <li>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+              </li>
+              <li>
+                <NavLink to="/profile">Profile</NavLink>
+              </li>
+            </>
+          ) : null}
         </ul>
       </div>
 

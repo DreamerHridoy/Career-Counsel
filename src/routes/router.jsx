@@ -10,40 +10,17 @@ import NotFoundPage from "../pages/NotFoundPage ";
 import Dashboard from "../components/Dashboard";
 import ForgotPassword from "../pages/ForgotPassword";
 import Profile from "../pages/Profile";
+import Home from "../pages/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-  },
-  {
-    path: "/service/:id",
-    element: (
-      <PrivateRoute>
-        <ServiceDetails></ServiceDetails>
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <PrivateRoute>
-        <Dashboard></Dashboard>
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: "/profile",
-    element: (
-      <PrivateRoute>
-        <Profile></Profile>
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: "auth",
-    element: <AuthLayout></AuthLayout>,
     children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
       {
         path: "/auth/login",
         element: <Login></Login>,
@@ -55,6 +32,30 @@ const router = createBrowserRouter([
       {
         path: "/auth/forgot-password",
         element: <ForgotPassword></ForgotPassword>,
+      },
+      {
+        path: "/service/:id",
+        element: (
+          <PrivateRoute>
+            <ServiceDetails></ServiceDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
     ],
   },
