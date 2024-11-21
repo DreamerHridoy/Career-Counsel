@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
-  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -85,7 +85,7 @@ const Register = () => {
               <span className="label-text">Password</span>
             </label>
             <input
-              type={showPassword ? "text" : "password"} // Toggle input type
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="password"
               className="input input-bordered"
@@ -93,11 +93,10 @@ const Register = () => {
             />
             <button
               type="button"
-              onClick={() => setShowPassword(!showPassword)} // Toggle state
+              onClick={() => setShowPassword(!showPassword)}
               className="absolute right-4 top-10 text-gray-500 focus:outline-none"
             >
               {showPassword ? <FaEye /> : <FaEyeSlash />}{" "}
-              {/* Use react-icons */}
             </button>
           </div>
           <div className="form-control mt-6">

@@ -58,7 +58,7 @@ const Login = () => {
         <form
           onSubmit={(e) => {
             handleLogin(e);
-            setEmail(e.target.email.value); // Save the email for Forgot Password
+            setEmail(e.target.email.value);
           }}
           className="card-body"
         >

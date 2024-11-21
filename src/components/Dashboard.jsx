@@ -24,7 +24,6 @@ const Dashboard = () => {
           </p>
 
           <div className="space-y-6">
-            {/* Profile Section */}
             <section className="bg-blue-50 p-6 rounded-md shadow">
               <h2 className="text-2xl font-semibold text-blue-600 mb-4">
                 Your Profile
@@ -46,7 +45,6 @@ const Dashboard = () => {
               </div>
             </section>
 
-            {/* Subscribed Services Section */}
             <section className="bg-blue-50 p-6 rounded-md shadow">
               <h2 className="text-2xl font-semibold text-blue-600 mb-4">
                 Subscribed Services
@@ -61,7 +59,6 @@ const Dashboard = () => {
               </ul>
             </section>
 
-            {/* Recent Activity Section */}
             <section className="bg-blue-50 p-6 rounded-md shadow">
               <h2 className="text-2xl font-semibold text-blue-600 mb-4">
                 Recent Activity
@@ -72,7 +69,6 @@ const Dashboard = () => {
               </p>
             </section>
 
-            {/* Action Buttons */}
             <div className="flex justify-center gap-4">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md transition">
                 Update Profile
@@ -82,7 +78,6 @@ const Dashboard = () => {
               </button>
             </div>
 
-            {/* Go Back to Home Button */}
             <div className="mt-6 text-center">
               <button
                 onClick={() => navigate("/")}

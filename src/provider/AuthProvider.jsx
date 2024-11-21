@@ -7,6 +7,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { toast } from "react-toastify"; // Import toast
+
+import "react-toastify/dist/ReactToastify.css";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -15,28 +18,58 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(loading, user);
   const createNewUser = (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
-  const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
-  const userLogin = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        toast.success(
+          "Account created successfully! Welcome, " + user.displayName
+        );
+        setUser(user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error("Error creating account: " + errorMessage);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  const authInfo = {
-    user,
-    setUser,
-    createNewUser,
-    logOut,
-    userLogin,
-    loading,
+  const userLogin = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        toast.success("Welcome back, " + user.displayName);
+        setUser(user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error("Error logging in: " + errorMessage);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
+
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth)
+      .then(() => {
+        toast.success("Successfully logged out!");
+        setUser(null);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error("Error logging out: " + errorMessage);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -46,6 +79,16 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
+
+  const authInfo = {
+    user,
+    setUser,
+    createNewUser,
+    logOut,
+    userLogin,
+    loading,
+  };
+
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
