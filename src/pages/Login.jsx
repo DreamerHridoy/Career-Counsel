@@ -22,9 +22,7 @@ const Login = () => {
     }
 
     userLogin(enteredEmail, password)
-      .then((result) => {
-        const user = result.user;
-        setUser(user);
+      .then(() => {
         toast.success("Login successful! Redirecting...");
         setTimeout(() => {
           navigate(location?.state || "/");
