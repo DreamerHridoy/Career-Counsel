@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,18 +8,19 @@ const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
+    const enteredEmail = e.target.email.value;
     const password = e.target.password.value;
 
-    if (!email || !password) {
+    if (!enteredEmail || !password) {
       toast.error("Please fill in both email and password fields.");
       return;
     }
 
-    userLogin(email, password)
+    userLogin(enteredEmail, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
@@ -44,13 +45,23 @@ const Login = () => {
       });
   };
 
+  const handleForgotPassword = () => {
+    navigate("/auth/forgot-password", { state: { email } });
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-2xl p-10">
         <h2 className="text-2xl font-semibold text-center">
           Login Your Account
         </h2>
-        <form onSubmit={handleLogin} className="card-body">
+        <form
+          onSubmit={(e) => {
+            handleLogin(e);
+            setEmail(e.target.email.value); // Save the email for Forgot Password
+          }}
+          className="card-body"
+        >
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -75,9 +86,13 @@ const Login = () => {
               required
             />
             <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
+              <button
+                type="button"
+                onClick={handleForgotPassword}
+                className="label-text-alt link link-hover text-blue-600"
+              >
                 Forgot password?
-              </a>
+              </button>
             </label>
           </div>
           <div className="form-control mt-6">

@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons from react-icons
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -78,29 +80,32 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text">Password</span>
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} // Toggle input type
               name="password"
               placeholder="password"
               className="input input-bordered"
               required
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)} // Toggle state
+              className="absolute right-4 top-10 text-gray-500 focus:outline-none"
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}{" "}
+              {/* Use react-icons */}
+            </button>
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary">Register</button>
           </div>
         </form>
         <p className="text-center font-semibold">
-          Already Have An Account?
+          Already Have An Account?{" "}
           <Link className="text-red-500" to="/auth/login">
             Login
           </Link>

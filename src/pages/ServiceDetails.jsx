@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { Helmet } from "react-helmet-async";
 
 const ServiceDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [service, setService] = useState(null);
   const [comments, setComments] = useState([]);
   const [input, setInput] = useState("");
@@ -29,7 +31,10 @@ const ServiceDetails = () => {
 
   return (
     <>
-      <NavBar></NavBar>
+      <Helmet>
+        <title>Service-Details</title>
+      </Helmet>
+      <NavBar />
       <div className="p-8 bg-gray-100">
         <h2 className="text-3xl font-bold text-center mb-4">
           {service.serviceName}
@@ -65,6 +70,16 @@ const ServiceDetails = () => {
         >
           Visit Service
         </a>
+
+        {/* Go Back to Home Button */}
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => navigate("/")}
+            className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md transition"
+          >
+            Go Back to Home Page
+          </button>
+        </div>
 
         {/* Comments Section */}
         <div className="mt-6">
@@ -102,7 +117,7 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
