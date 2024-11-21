@@ -14,7 +14,7 @@ const Profile = () => {
 
     try {
       await updateProfile(user, { displayName: name, photoURL: photoURL });
-      // Update the user in context
+
       setUser({ ...user, displayName: name, photoURL: photoURL });
       toast.success("Profile updated successfully!");
     } catch (error) {
